@@ -4,7 +4,7 @@ const express = require('express');
 const fs = require('fs');
 var app = express();
 
-const port = 3000
+const port = process.env.PORT || 3000;
 
 FolderPub = path.join(__dirname, 'public');
 FolderViewPart = path.join(__dirname, 'views/partials');
@@ -38,6 +38,12 @@ app.get('/', (req, res) => {
     res.render('home.hbs',{
         pageTitle: 'Home Page',
         welcomeMessage: 'Welcome to my website'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs',{
+        pageTitle: 'Projects Page'
     });
 });
 
